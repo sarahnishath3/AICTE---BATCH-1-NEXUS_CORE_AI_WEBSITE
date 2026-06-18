@@ -1,0 +1,22 @@
+services:
+  # 1. Python Backend Service
+  - type: web
+    name: nexus-core-api
+    env: python
+    rootDir: Nexus_Core
+    buildCommand: "pip install -e ."
+    startCommand: "uvicorn nexus_core.embedding.server:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.0
+
+  # 2. Astro Frontend Service
+  - type: web
+    name: nexus-core-web
+    env: node
+    rootDir: nexuscoreweb
+    buildCommand: "npm install && npm run build"
+    startCommand: "node ./dist/server/entry.mjs"
+    envVars:
+      - key: NODE_VERSION
+        value: 20.0.0

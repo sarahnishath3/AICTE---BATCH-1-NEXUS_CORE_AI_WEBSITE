@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/astro/landing/Hero.astro';
+import About from '../components/astro/landing/About.astro';
+import Sources from '../components/astro/landing/Sources.astro';
+import FeatureMatrix from '../components/react/FeatureMatrix';
+import QuickStart from '../components/astro/landing/QuickStart.astro';
+import UseCases from '../components/astro/landing/UseCases.astro';
+import Stats from '../components/astro/landing/Stats.astro';
+import { getLangFromUrl } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+
+export const prerender = true;
+---
+
+<BaseLayout
+  title="Nexus Core - The Data Layer for AI Systems"
+  description="Transform 18 source types — docs, GitHub repos, PDFs, videos, notebooks, wikis — into AI skills and RAG knowledge for Claude, Gemini, OpenAI, LangChain, Cursor, and 12+ AI platforms."
+>
+  <Hero />
+  <Sources />
+  <About />
+  <div id="feature-matrix">
+    <FeatureMatrix client:load lang={lang} />
+  </div>
+  <QuickStart />
+  <UseCases />
+  <Stats />
+</BaseLayout>

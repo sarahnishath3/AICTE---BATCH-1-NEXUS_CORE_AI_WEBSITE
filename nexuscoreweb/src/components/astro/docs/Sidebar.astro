@@ -1,0 +1,405 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { SupportedLanguage } from '../../../i18n/utils';
+
+interface Props {
+  docs: CollectionEntry<'docs'>[] | CollectionEntry<'docs-zh'>[];
+  currentSlug: string;
+  lang?: SupportedLanguage;
+}
+
+const { docs, currentSlug, lang = 'en' } = Astro.props;
+
+// Language prefix for links
+const langPrefix = lang === 'zh' ? '/zh' : '';
+
+// Organize docs by section
+const sections = {
+  'about': { title: 'About', order: 1, docs: [] as CollectionEntry<'docs'>[] },
+  'getting-started': { title: 'Getting Started', order: 2, docs: [] as CollectionEntry<'docs'>[] },
+  'tutorials': { title: 'Tutorials', order: 3, docs: [] as CollectionEntry<'docs'>[] },
+  'manual': { title: 'Manual', order: 4, docs: [] as CollectionEntry<'docs'>[] },
+  'integrations': { title: 'Integrations', order: 5, docs: [] as CollectionEntry<'docs'>[] },
+  'cli': { title: 'CLI Reference', order: 6, docs: [] as CollectionEntry<'docs'>[] },
+  'reference': { title: 'Reference', order: 7, docs: [] as CollectionEntry<'docs'>[] },
+  'community': { title: 'Community', order: 8, docs: [] as CollectionEntry<'docs'>[] },
+  'features': { title: 'Features', order: 9, docs: [] as CollectionEntry<'docs'>[] },
+  'guides': { title: 'Guides', order: 10, docs: [] as CollectionEntry<'docs'>[] },
+  'deployments': { title: 'Deployments', order: 11, docs: [] as CollectionEntry<'docs'>[] },
+};
+
+// Subsection configuration for tutorials
+const tutorialSubsections = {
+  'rag': { title: 'RAG Pipelines', order: 1 },
+  'ai-assistants': { title: 'AI Assistants', order: 2 },
+  'coding': { title: 'AI Coding', order: 3 },
+  'docs': { title: 'Documentation', order: 4 },
+  'advanced': { title: 'Advanced', order: 5 },
+};
+
+// Subsection configuration for manual
+const manualSubsections = {
+  'concepts': { title: 'Concepts', order: 1 },
+  'scraping': { title: 'Scraping', order: 2 },
+  'enhancement': { title: 'Enhancement', order: 3 },
+  'packaging': { title: 'Packaging', order: 4 },
+  'mcp': { title: 'MCP', order: 5 },
+  'platforms': { title: 'Platforms', order: 6 },
+  'advanced': { title: 'Advanced', order: 7 },
+  'codebase-analysis': { title: 'Codebase Analysis', order: 8 },
+};
+
+// Subsection configuration for integrations
+const integrationSubsections = {
+  'rag': { title: 'RAG & Vector DBs', order: 1 },
+  'coding': { title: 'AI Coding', order: 2 },
+};
+
+// Group docs by section
+docs.forEach((doc) => {
+  const section = doc.data.section;
+  if (sections[section]) {
+    sections[section].docs.push(doc);
+  }
+});
+
+// Sort docs within each section by order
+Object.values(sections).forEach((section) => {
+  section.docs.sort((a, b) => (a.data.order || 999) - (b.data.order || 999));
+});
+
+// Get ordered sections
+const orderedSections = Object.entries(sections).sort(([, a], [, b]) => a.order - b.order);
+---
+
+<!-- Mobile Menu Toggle Button (visible on mobile/tablet only) -->
+<button
+  id="docs-mobile-menu-toggle"
+  class="fixed bottom-6 right-6 z-[60] xl:hidden flex items-center gap-2 rounded-full border-2 border-brand-primary bg-brand-primary px-5 py-3 text-sm font-semibold text-white shadow-lg hover:bg-brand-secondary hover:border-brand-secondary transition-all duration-300 hover:scale-105"
+  aria-label="Toggle documentation navigation"
+  aria-expanded="false"
+  aria-controls="docs-sidebar"
+>
+  <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+  </svg>
+  <span>Menu</span>
+</button>
+
+<!-- Mobile Overlay (backdrop) -->
+<div
+  id="docs-sidebar-overlay"
+  class="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm xl:hidden hidden transition-opacity duration-300"
+  aria-hidden="true"
+></div>
+
+<!-- Sidebar -->
+<aside
+  id="docs-sidebar"
+  class="fixed left-0 top-16 h-[calc(100vh-4rem)] w-72 lg:w-80 overflow-y-auto overflow-x-hidden bg-dark-surface border-r border-dark-border px-4 py-6 z-50 transition-transform duration-300 ease-in-out -translate-x-full xl:sticky xl:top-16 xl:self-start xl:translate-x-0"
+  style="transform: translateX(-100%);"
+  aria-label="Documentation navigation"
+  aria-hidden="true"
+>
+  <!-- Mobile Close Button -->
+  <div class="xl:hidden flex items-center justify-between mb-4 pb-4 border-b border-dark-border">
+    <h2 class="text-lg font-semibold text-dark-text-primary">Documentation</h2>
+    <button
+      id="docs-mobile-menu-close"
+      class="rounded-lg p-2 text-dark-text-secondary hover:bg-dark-border hover:text-dark-text-primary transition-colors"
+      aria-label="Close navigation"
+    >
+      <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Navigation Content -->
+  <nav>
+    <div class="space-y-6">
+      {/* Sections with subsections */}
+      {orderedSections.map(([key, section]) => {
+        if (section.docs.length === 0) return null;
+        
+        // Handle Tutorials section with subsections
+        if (key === 'tutorials') {
+          return (
+            <div>
+              <h3 class="mb-2 text-sm font-semibold uppercase tracking-wider text-dark-text-secondary break-words">
+                {section.title}
+              </h3>
+              {Object.entries(tutorialSubsections).map(([subKey, subSection]) => {
+                const subDocs = section.docs
+                  .filter(d => {
+                    const slugParts = d.slug.split('/');
+                    return slugParts[0] === 'tutorials' && slugParts[1] === subKey;
+                  })
+                  .sort((a, b) => (a.data.order || 999) - (b.data.order || 999));
+                
+                if (subDocs.length === 0) return null;
+                
+                return (
+                  <div class="mb-3">
+                    <h4 class="mb-1 px-3 text-xs font-medium text-brand-primary uppercase tracking-wider">
+                      {subSection.title}
+                    </h4>
+                    <ul class="space-y-1">
+                      {subDocs.map((doc) => {
+                        const isActive = doc.slug === currentSlug;
+                        return (
+                          <li>
+                            <a
+                              href={`${langPrefix}/docs/${doc.slug}`}
+                              class={`block rounded px-3 py-2 text-sm transition-colors break-words ${
+                                isActive
+                                  ? 'bg-brand-primary text-white font-medium'
+                                  : 'text-dark-text-secondary hover:bg-dark-border hover:text-dark-text-primary'
+                              }`}
+                            >
+                              {doc.data.title}
+                            </a>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                );
+              })}
+            </div>
+          );
+        }
+        
+        // Handle Manual section with subsections
+        if (key === 'manual') {
+          return (
+            <div>
+              <h3 class="mb-2 text-sm font-semibold uppercase tracking-wider text-dark-text-secondary break-words">
+                {section.title}
+              </h3>
+              {Object.entries(manualSubsections).map(([subKey, subSection]) => {
+                const subDocs = section.docs
+                  .filter(d => {
+                    const slugParts = d.slug.split('/');
+                    return slugParts[0] === 'manual' && slugParts[1] === subKey;
+                  })
+                  .sort((a, b) => (a.data.order || 999) - (b.data.order || 999));
+                
+                if (subDocs.length === 0) return null;
+                
+                return (
+                  <div class="mb-3">
+                    <h4 class="mb-1 px-3 text-xs font-medium text-brand-primary uppercase tracking-wider">
+                      {subSection.title}
+                    </h4>
+                    <ul class="space-y-1">
+                      {subDocs.map((doc) => {
+                        const isActive = doc.slug === currentSlug;
+                        return (
+                          <li>
+                            <a
+                              href={`${langPrefix}/docs/${doc.slug}`}
+                              class={`block rounded px-3 py-2 text-sm transition-colors break-words ${
+                                isActive
+                                  ? 'bg-brand-primary text-white font-medium'
+                                  : 'text-dark-text-secondary hover:bg-dark-border hover:text-dark-text-primary'
+                              }`}
+                            >
+                              {doc.data.title}
+                            </a>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                );
+              })}
+            </div>
+          );
+        }
+        
+        // Handle Integrations section - flat list, no subsections
+        // Just render all docs in the section
+        return (
+          <div>
+            <h3 class="mb-2 text-sm font-semibold uppercase tracking-wider text-dark-text-secondary break-words">
+              {section.title}
+            </h3>
+            <ul class="space-y-1">
+              {section.docs.map((doc) => {
+                const isActive = doc.slug === currentSlug;
+                return (
+                  <li>
+                    <a
+                      href={`${langPrefix}/docs/${doc.slug}`}
+                      class={`block rounded px-3 py-2 text-sm transition-colors break-words ${
+                        isActive
+                          ? 'bg-brand-primary text-white font-medium'
+                          : 'text-dark-text-secondary hover:bg-dark-border hover:text-dark-text-primary'
+                      }`}
+                    >
+                      {doc.data.title}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        );
+      })}
+    </div>
+  </nav>
+</aside>
+
+<script>
+  // Mobile menu functionality
+  const sidebar = document.getElementById('docs-sidebar');
+  const overlay = document.getElementById('docs-sidebar-overlay');
+  const toggleButton = document.getElementById('docs-mobile-menu-toggle');
+  const closeButton = document.getElementById('docs-mobile-menu-close');
+
+  let isOpen = false;
+
+  function openSidebar() {
+    if (window.innerWidth >= 1280) return; // Don't toggle on xl screens
+
+    isOpen = true;
+    sidebar?.classList.remove('-translate-x-full');
+    if (sidebar) sidebar.style.transform = 'translateX(0)';
+    sidebar?.setAttribute('aria-hidden', 'false');
+    overlay?.classList.remove('hidden');
+    toggleButton?.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden'; // Prevent body scroll when sidebar is open
+
+    // Focus trap - focus the close button
+    closeButton?.focus();
+  }
+
+  function closeSidebar() {
+    isOpen = false;
+    sidebar?.classList.add('-translate-x-full');
+    if (sidebar) sidebar.style.transform = 'translateX(-100%)';
+    sidebar?.setAttribute('aria-hidden', 'true');
+    overlay?.classList.add('hidden');
+    toggleButton?.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = ''; // Restore body scroll
+
+    // Return focus to toggle button
+    toggleButton?.focus();
+  }
+
+  // Toggle button click
+  toggleButton?.addEventListener('click', () => {
+    if (isOpen) {
+      closeSidebar();
+    } else {
+      openSidebar();
+    }
+  });
+
+  // Close button click
+  closeButton?.addEventListener('click', () => {
+    closeSidebar();
+  });
+
+  // Overlay click
+  overlay?.addEventListener('click', () => {
+    closeSidebar();
+  });
+
+  // Close on escape key
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && isOpen) {
+      closeSidebar();
+    }
+  });
+
+  // Close sidebar when clicking a link (on mobile)
+  const sidebarLinks = sidebar?.querySelectorAll('a');
+  sidebarLinks?.forEach((link) => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth < 1280) {
+        closeSidebar();
+      }
+    });
+  });
+
+  // Close sidebar on window resize to desktop size
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1280 && isOpen) {
+      closeSidebar();
+    }
+  });
+
+  // Handle page navigation (for Astro view transitions if enabled)
+  document.addEventListener('astro:page-load', () => {
+    if (isOpen) {
+      closeSidebar();
+    }
+  });
+
+  // Initialize sidebar state on page load
+  function initializeSidebar() {
+    // Ensure sidebar is closed on mobile on page load
+    if (window.innerWidth < 1280) {
+      sidebar?.classList.add('-translate-x-full');
+      if (sidebar) sidebar.style.transform = 'translateX(-100%)';
+      sidebar?.setAttribute('aria-hidden', 'true');
+      overlay?.classList.add('hidden');
+      toggleButton?.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      isOpen = false;
+    } else {
+      // On desktop, ensure sidebar is visible
+      sidebar?.classList.remove('-translate-x-full');
+      if (sidebar) sidebar.style.transform = 'translateX(0)';
+      sidebar?.setAttribute('aria-hidden', 'false');
+    }
+  }
+
+  // Run initialization immediately (before DOMContentLoaded)
+  initializeSidebar();
+
+  // Re-initialize on various page load events
+  document.addEventListener('DOMContentLoaded', initializeSidebar);
+  window.addEventListener('load', initializeSidebar);
+
+  // Handle Astro page transitions
+  document.addEventListener('astro:after-swap', initializeSidebar);
+</script>
+
+<style>
+  /* Ensure smooth scrolling in sidebar */
+  #docs-sidebar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(99, 102, 241, 0.5) rgba(26, 26, 31, 0.5);
+  }
+
+  #docs-sidebar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  #docs-sidebar::-webkit-scrollbar-track {
+    background: rgba(26, 26, 31, 0.5);
+    border-radius: 3px;
+  }
+
+  #docs-sidebar::-webkit-scrollbar-thumb {
+    background: rgba(99, 102, 241, 0.5);
+    border-radius: 3px;
+  }
+
+  #docs-sidebar::-webkit-scrollbar-thumb:hover {
+    background: rgba(99, 102, 241, 0.7);
+  }
+
+  /* Smooth transition for overlay */
+  #docs-sidebar-overlay {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  #docs-sidebar-overlay:not(.hidden) {
+    opacity: 1;
+  }
+</style>

@@ -1,0 +1,32 @@
+apiVersion: v2
+name: nexus-core
+description: A Helm chart for Nexus Core - Convert documentation to AI skills
+type: application
+version: 1.0.0
+appVersion: "2.9.0"
+
+keywords:
+  - ai
+  - documentation
+  - skills
+  - mcp
+  - vector-database
+  - claude
+  - gemini
+  - openai
+
+home: https://nexuscoreweb.com
+sources:
+  - https://github.com/your-org/nexus-core
+
+maintainers:
+  - name: Nexus Core Team
+    email: noreply@skillseekers.dev
+
+icon: https://nexuscoreweb.com/icon.png
+
+dependencies: []
+
+annotations:
+  category: AI/ML
+  licenses: MIT

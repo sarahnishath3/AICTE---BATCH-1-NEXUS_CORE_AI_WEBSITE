@@ -1,0 +1,447 @@
+{
+  "hero": {
+    "badge": {
+      "version": "v3.5.0",
+      "new": "NEW",
+      "tests": "3194+ tests passing",
+      "license": "MIT Licensed"
+    },
+    "headline": {
+      "part1": "The Data Layer",
+      "part2": "for AI Systems",
+      "part3": ""
+    },
+    "subheadline": "Transform 18 source types — docs, GitHub repos, PDFs, videos, notebooks, wikis, and more — into AI skills and RAG knowledge. One tool for Claude, Gemini, OpenAI, LangChain, Cursor, and 12+ AI platforms.",
+    "cta": {
+      "getStarted": "Get Started",
+      "browseConfigs": "Browse Configs"
+    },
+    "quickInstall": {
+      "label": "Quick Install",
+      "copy": "Copy",
+      "copied": "Copied!"
+    },
+    "socialProof": {
+      "tests": "3194+ Tests",
+      "platforms": "12+ AI Platforms",
+      "sources": "17 Input Sources",
+      "time": "15-45 min / skill"
+    }
+  },
+  "nav": {
+    "home": "Home",
+    "docs": "Documentation",
+    "configs": "Nexus Core Gallery",
+    "blog": "Blog",
+    "github": "GitHub",
+    "architecture": "Architecture",
+    "apiDocs": "API Docs",
+    "getStarted": "Get Started"
+  },
+  "common": {
+    "learnMore": "Learn More",
+    "readDocs": "Read Docs",
+    "viewOnGitHub": "View on GitHub",
+    "copy": "Copy",
+    "copied": "Copied!"
+  },
+  "about": {
+    "heading": "The Data Layer for AI Systems",
+    "description": "Nexus Core transforms 18 source types — documentation sites, GitHub repos, PDFs, videos, Jupyter notebooks, Word/EPUB documents, OpenAPI specs, Confluence wikis, Notion pages, and more — into structured AI skills and RAG-ready knowledge for 12+ AI platforms.",
+    "problem": {
+      "title": "The Problem",
+      "item1": "Building AI skills takes days of preprocessing — scraping, analyzing code, extracting patterns",
+      "item2": "AI assistants lack deep expertise without manual context preparation",
+      "item3": "Understanding new codebases requires weeks of manual analysis",
+      "item4": "Different AI systems need different formats — skills, RAG, coding rules"
+    },
+    "solution": {
+      "title": "The Solution",
+      "item1": "One tool for 18 source types: docs, repos, PDFs, videos, notebooks, wikis, and more",
+      "item2": "Deep code analysis detects patterns, architecture, and design decisions across 27+ languages",
+      "item3": "12+ output platforms: Claude, Gemini, OpenAI, Kimi, DeepSeek, LangChain, Cursor, and more",
+      "item4": "15-45 minutes end-to-end: from any source to production-ready AI skill"
+    },
+    "benefits": {
+      "speed": {
+        "title": "10x Faster Development",
+        "description": "Stop copying docs manually. Generate comprehensive skills in minutes, not hours."
+      },
+      "expertise": {
+        "title": "Framework Expertise",
+        "description": "Give AI assistants deep knowledge of any framework with API references and examples."
+      },
+      "uptodate": {
+        "title": "Always Up-to-Date",
+        "description": "Re-run when docs update. Keep your AI knowledge fresh and accurate."
+      }
+    }
+  },
+  "features": {
+    "title": "Complete AI Knowledge Toolkit",
+    "subtitle": "Transform any of 18 source types into structured AI skills and RAG knowledge",
+    "viewAll": "View All {count} Features",
+    "showLess": "Show Less",
+    "moreFeatures": "+{count} more features",
+    "formats": {
+      "title": "12+ AI Platforms",
+      "rag": "RAG/Vectors: LangChain, LlamaIndex, Chroma, FAISS, Haystack, Qdrant, Weaviate, Pinecone",
+      "ai": "AI Skills: Claude, Gemini, OpenAI, Kimi, DeepSeek, Qwen, OpenRouter, Together, Fireworks, MiniMax, OpenCode",
+      "coding": "AI Coding: Cursor, Windsurf, Cline, Continue.dev, Roo, Aider, Bolt, Kilo",
+      "generic": "Generic: Markdown, JSON, YAML"
+    },
+    "cta": {
+      "question": "Ready to transform your documentation?",
+      "button": "Get Started Now"
+    },
+    "items": [
+      {
+        "icon": "🎯",
+        "title": "18 Source Types",
+        "description": "Docs, GitHub, PDF, video, Word, EPUB, Jupyter, OpenAPI, AsciiDoc, PPTX, HTML, RSS, man pages, Confluence, Notion, Slack/Discord, and local codebases",
+        "category": "v3.3.0+"
+      },
+      {
+        "icon": "🤖",
+        "title": "Agent-Agnostic Architecture",
+        "description": "All enhancers support Claude, Kimi, Codex, Copilot, OpenCode, and custom agents via unified AgentClient",
+        "category": "NEW - v3.5.0"
+      },
+      {
+        "icon": "🌊",
+        "title": "Three-Stream Analysis",
+        "description": "Split GitHub repos into Code (C3.x), Docs, and Insights streams for comprehensive skills",
+        "category": "Core Feature"
+      },
+      {
+        "icon": "🌐",
+        "title": "Smart SPA Discovery",
+        "description": "Three-layer discovery engine: sitemap.xml, llms.txt, and SPA nav rendering for JavaScript sites",
+        "category": "NEW - v3.5.0"
+      },
+      {
+        "icon": "🔧",
+        "title": "40 MCP Tools",
+        "description": "AI agents can prepare their own knowledge with 40 MCP tools across 10 categories",
+        "category": "v3.5.0"
+      },
+      {
+        "icon": "🏪",
+        "title": "Marketplace Publisher",
+        "description": "Publish skills to Claude Code plugin marketplace repos with MarketplacePublisher and ConfigPublisher",
+        "category": "NEW - v3.5.0"
+      },
+      {
+        "icon": "🖥️",
+        "title": "Browser Rendering",
+        "description": "Render JavaScript SPA sites with Playwright — auto-installs Chromium, handles React/Vue/Angular",
+        "category": "v3.5.0"
+      },
+      {
+        "icon": "🩺",
+        "title": "Doctor Command",
+        "description": "8 diagnostic checks: Python version, dependencies, API keys, MCP server, output directory",
+        "category": "NEW - v3.5.0"
+      },
+      {
+        "icon": "🛡️",
+        "title": "Prompt Injection Detection",
+        "description": "Bundled security workflow scans scraped content for injection patterns and flags suspicious content",
+        "category": "NEW - v3.5.0"
+      },
+      {
+        "icon": "📊",
+        "title": "12 LLM Platform Targets",
+        "description": "Claude, Gemini, OpenAI, Kimi, DeepSeek, Qwen, OpenRouter, Together, Fireworks, MiniMax, OpenCode, Markdown",
+        "category": "v3.4.0"
+      },
+      {
+        "icon": "🔌",
+        "title": "18 Agent Install Paths",
+        "description": "Install skills to Claude, Cursor, Windsurf, Cline, Continue, Roo, Aider, Bolt, Kilo, Kimi, and more",
+        "category": "v3.4.0"
+      },
+      {
+        "icon": "🎬",
+        "title": "Video Scraping",
+        "description": "Extract code, transcripts, and structured knowledge from YouTube and local videos with OCR",
+        "category": "v3.2.0"
+      },
+      {
+        "icon": "✨",
+        "title": "AI Enhancement",
+        "description": "Automatically add explanations, examples, and best practices using any AI agent",
+        "category": "Core Feature"
+      },
+      {
+        "icon": "📦",
+        "title": "24+ Preset Configs",
+        "description": "Ready-to-use configs for popular frameworks (React, Vue, Django, FastAPI, Godot, etc.)",
+        "category": "Configuration"
+      },
+      {
+        "icon": "✅",
+        "title": "3194+ Tests",
+        "description": "Production-ready with 3194+ tests passing across the entire codebase",
+        "category": "Quality"
+      },
+      {
+        "icon": "🔄",
+        "title": "Sync Config",
+        "description": "Crawl doc site navigation, diff URLs against your config, and auto-update with --apply",
+        "category": "v3.3.0"
+      },
+      {
+        "icon": "📐",
+        "title": "UML Architecture Docs",
+        "description": "21 UML diagrams (class, sequence, activity, component) synced from source code via StarUML",
+        "category": "v3.4.0"
+      },
+      {
+        "icon": "⚡",
+        "title": "Zero Manual Work",
+        "description": "Fully automated pipeline from source to production-ready skill",
+        "category": "Automation"
+      },
+      {
+        "icon": "🔬",
+        "title": "C3.x Codebase Analysis",
+        "description": "Deep AST analysis across 27+ languages — patterns, examples, guides, configs, and architecture",
+        "category": "Core Feature"
+      },
+      {
+        "icon": "📄",
+        "title": "PDF & Document OCR",
+        "description": "Extract text from scanned PDFs, Word docs, EPUB e-books, and PowerPoint presentations",
+        "category": "Data Sources"
+      },
+      {
+        "icon": "🧠",
+        "title": "Smart Chunking",
+        "description": "Automatic content splitting optimized for LLM context windows and RAG pipelines",
+        "category": "AI Features"
+      },
+      {
+        "icon": "🎯",
+        "title": "URL Pattern Filtering",
+        "description": "Include/exclude specific paths with regex pattern matching",
+        "category": "Configuration"
+      },
+      {
+        "icon": "⚙️",
+        "title": "Async Mode",
+        "description": "Parallel scraping with configurable concurrency (up to 50 workers)",
+        "category": "Performance"
+      },
+      {
+        "icon": "🔒",
+        "title": "GitHub Auth",
+        "description": "Support for private repositories with GitHub token authentication",
+        "category": "Integration"
+      }
+    ]
+  },
+  "quickstart": {
+    "title": "Get Started in 3 Steps",
+    "subtitle": "From zero to production-ready skill in 15-45 minutes",
+    "steps": [
+      {
+        "number": "1",
+        "title": "1. Install",
+        "description": "Install from PyPI in seconds",
+        "code": "pip install nexus-core"
+      },
+      {
+        "number": "2",
+        "title": "2. Create Skill",
+        "description": "From any of 18 source types",
+        "code": "nexus-core create https://react.dev\n# Or: nexus-core create facebook/react\n# Or: nexus-core create ./my-project"
+      },
+      {
+        "number": "3",
+        "title": "3. Package & Deploy",
+        "description": "Export to any AI platform",
+        "code": "nexus-core package output/react --target claude\n# Or: --target langchain, gemini, openai, cursor, ..."
+      }
+    ],
+    "installOptions": {
+      "title": "Multiple Installation Options",
+      "pypi": {
+        "title": "PyPI (Recommended)",
+        "badge": "Easiest",
+        "code": "pip install nexus-core"
+      },
+      "uv": {
+        "title": "uv (Modern)",
+        "badge": "Fast",
+        "code": "uv tool install nexus-core"
+      },
+      "source": {
+        "title": "From Source",
+        "badge": "Dev",
+        "code": "git clone && pip install -e ."
+      },
+      "mcp": {
+        "title": "MCP Integration",
+        "badge": "18 Agents",
+        "code": "./setup_mcp.sh"
+      }
+    },
+    "cta": "Read Full Installation Guide"
+  },
+  "usecases": {
+    "title": "Who Uses Nexus Core?",
+    "subtitle": "From solo developers to enterprise teams",
+    "cases": [
+      {
+        "title": "For Developers",
+        "icon": "👨‍💻",
+        "description": "Create skills from documentation + GitHub repos with automatic conflict detection.",
+        "example": "Build a React skill from official docs + GitHub repo, catch API changes before they surprise you."
+      },
+      {
+        "title": "For Game Developers",
+        "icon": "🎮",
+        "description": "Generate comprehensive skills for game engines like Godot (handles 40K+ pages!).",
+        "example": "Create complete Godot skill covering all topics with intelligent router/hub pattern."
+      },
+      {
+        "title": "For Teams",
+        "icon": "👥",
+        "description": "Combine internal docs + code repos + Confluence wikis into single source of truth.",
+        "example": "Share custom configs via private git repos or publish to the marketplace."
+      },
+      {
+        "title": "For Learners",
+        "icon": "📚",
+        "description": "Build comprehensive skills from docs, code examples, videos, and PDF tutorials.",
+        "example": "Combine official docs + GitHub examples + YouTube tutorials + PDF manual into one learning resource."
+      },
+      {
+        "title": "For Open Source",
+        "icon": "🔍",
+        "description": "Analyze repos to find documentation gaps and outdated examples automatically.",
+        "example": "Detect discrepancies between documentation and actual code implementation."
+      }
+    ],
+    "platforms": {
+      "title": "Multi-Platform Support",
+      "subtitle": "Export your skills to 12+ LLM platforms with platform-specific optimizations",
+      "items": [
+        "🤖 Claude AI",
+        "💎 Google Gemini",
+        "🔮 OpenAI / GPT",
+        "🌙 Kimi / DeepSeek / Qwen",
+        "🔗 LangChain / LlamaIndex",
+        "💻 Cursor / Windsurf / Cline"
+      ]
+    }
+  },
+  "stats": {
+    "title": "By the Numbers",
+    "subtitle": "Trusted metrics from a production-ready tool",
+    "labels": {
+      "stars": "GitHub Stars",
+      "forks": "Forks",
+      "contributors": "Contributors",
+      "tests": "Tests Passing",
+      "configs": "Preset Configs",
+      "platforms": "AI Platforms",
+      "mcpTools": "MCP Tools",
+      "languages": "Languages"
+    },
+    "values": {
+      "tests": "3194+",
+      "configs": "24+",
+      "platforms": "12+",
+      "mcpTools": "40",
+      "languages": "27+"
+    },
+    "banner": "Open source • MIT Licensed • Active development",
+    "cta": {
+      "star": "Star on GitHub",
+      "download": "Download from PyPI"
+    }
+  },
+  "footer": {
+    "tagline": "The Data Layer for AI Systems — Transform Any Source into Structured Knowledge.",
+    "sections": {
+      "product": {
+        "title": "Product",
+        "links": {
+          "features": "Features",
+          "configs": "Configs",
+          "docs": "Documentation",
+          "architecture": "Architecture",
+          "api": "API Reference"
+        }
+      },
+      "resources": {
+        "title": "Resources",
+        "links": {
+          "gettingStarted": "Getting Started",
+          "quickStart": "Quick Start",
+          "installation": "Installation",
+          "overview": "Overview"
+        }
+      },
+      "community": {
+        "title": "Community",
+        "links": {
+          "github": "GitHub",
+          "issues": "Issues",
+          "pypi": "PyPI",
+          "board": "Project Board"
+        }
+      }
+    },
+    "copyright": "© {year} Nexus Core. MIT License. Built with ❤️ using",
+    "stats": {
+      "tests": "3194+ tests"
+    }
+  },
+  "configs": {
+    "title": "Configuration Gallery | Nexus Core",
+    "description": "Browse and download production-ready configurations for Nexus Core. Convert documentation, GitHub repos, PDFs, and 14 more source types into AI skills with pre-built configs.",
+    "gallery": {
+      "heading": "Configuration Gallery",
+      "subtitle": "Browse and download {count} production-ready configurations for Nexus Core",
+      "showing": "Showing {filtered} of {total} configurations",
+      "searchFor": "for \"{query}\"",
+      "noResults": {
+        "title": "No configurations found",
+        "description": "Try adjusting your filters or search query",
+        "clearButton": "Clear All Filters"
+      }
+    },
+    "submit": {
+      "heading": "Share Your Config",
+      "subtitle": "Created a config for a framework not listed here? Share it with the community!",
+      "howToTitle": "How to Submit",
+      "steps": {
+        "step1": "Validate your config using the tool below",
+        "step2": "Click \"Copy & Submit to GitHub\" when valid",
+        "step3": "Paste your config in the GitHub issue that opens",
+        "step4": "We'll review and add it to the official gallery!"
+      },
+      "guideButton": "📖 Detailed Guide",
+      "benefits": {
+        "quickReview": {
+          "icon": "⚡",
+          "title": "Quick Review",
+          "description": "We review submissions within 24-48 hours"
+        },
+        "qualityChecked": {
+          "icon": "✅",
+          "title": "Quality Checked",
+          "description": "All configs are tested before adding"
+        },
+        "getCredit": {
+          "icon": "🎉",
+          "title": "Get Credit",
+          "description": "Your GitHub profile listed as contributor"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "nexus-core",
+  "version": "3.5.0",
+  "description": "Convert docs and repos into AI skills via MCP",
+  "author": {
+    "name": "yusufkaraaslan",
+    "url": "https://github.com/yusufkaraaslan/Nexus_Core"
+  },
+  "homepage": "https://nexuscoreweb.com/",
+  "repository": "https://github.com/yusufkaraaslan/Nexus_Core",
+  "keywords": ["mcp", "codex", "skills", "documentation"],
+  "mcpServers": "./.mcp.json",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Nexus Core",
+    "shortDescription": "Convert docs and repos into AI skills via MCP",
+    "longDescription": "Convert documentation websites, GitHub repositories, and PDFs into AI skills with automatic conflict detection.",
+    "category": "Development",
+    "websiteURL": "https://nexuscoreweb.com/"
+  }
+}

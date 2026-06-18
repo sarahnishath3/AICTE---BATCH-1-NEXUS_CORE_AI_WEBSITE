@@ -1,0 +1,10 @@
+# Weaviate Example Dependencies
+
+# Nexus Core (main package)
+nexus-core>=2.10.0
+
+# Weaviate Python client
+weaviate-client>=4.0.0
+
+# For pretty output
+rich>=13.0.0

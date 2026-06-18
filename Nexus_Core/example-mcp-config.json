@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "skill-seeker": {
+      "type": "stdio",
+      "command": "/path/to/your/Nexus_Core/.venv/bin/python3",
+      "args": [
+        "-m",
+        "nexus_core.mcp.server_fastmcp"
+      ],
+      "cwd": "/path/to/your/Nexus_Core",
+      "env": {}
+    }
+  }
+}

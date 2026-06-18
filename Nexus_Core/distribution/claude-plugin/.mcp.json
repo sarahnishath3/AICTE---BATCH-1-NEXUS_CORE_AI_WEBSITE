@@ -1,0 +1,6 @@
+{
+  "nexus-core": {
+    "command": "python",
+    "args": ["-m", "nexus_core.mcp.server_fastmcp"]
+  }
+}
