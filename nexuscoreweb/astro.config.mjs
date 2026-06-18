@@ -44,6 +44,22 @@ export default defineConfig({
   adapter: netlify(),
 
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    ssr: {
+      external: [
+        '@testing-library/user-event',
+        '@testing-library/react',
+        '@testing-library/jest-dom',
+        '@testing-library/dom',
+      ]
+    },
+    optimizeDeps: {
+      exclude: [
+        '@testing-library/user-event',
+        '@testing-library/react',
+        '@testing-library/jest-dom',
+        '@testing-library/dom',
+      ]
+    }
   }
 });
