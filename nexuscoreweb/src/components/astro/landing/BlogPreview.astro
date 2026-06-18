@@ -1,0 +1,82 @@
+---
+import { getCollection } from 'astro:content';
+import { getLangFromUrl, getTranslations } from '../../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = getTranslations(lang);
+
+const blogCollection = lang === 'zh' ? 'blog-zh' : 'blog';
+const allPosts = await getCollection(blogCollection as 'blog' | 'blog-zh', ({ data }) => !data.draft);
+const posts = allPosts
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+const langPrefix = lang === 'zh' ? '/zh' : '';
+---
+
+{posts.length > 0 && (
+  <section class="py-20 bg-dark-surface border-y border-dark-border relative overflow-hidden">
+    <div class="absolute top-1/2 right-0 w-[500px] h-[500px] bg-ocean-600/5 rounded-full blur-3xl -z-10"></div>
+    <div class="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-ocean-500/5 rounded-full blur-3xl -z-10"></div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center mb-12">
+        <h2 class="text-4xl font-bold mb-4">
+          <span class="bg-gradient-to-r from-ocean-600 to-ocean-500 bg-clip-text text-transparent">
+            {lang === 'zh' ? '最新文章' : 'Latest from the Blog'}
+          </span>
+        </h2>
+        <p class="text-xl text-dark-text-secondary">
+          {lang === 'zh'
+            ? '了解 Nexus Core 的最新动态、教程和更新'
+            : 'News, tutorials, and updates from the Nexus Core team'}
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
+        {posts.map((post) => (
+          <a href={`${langPrefix}/blog/${post.slug}`} class="group block">
+            <article class="h-full bg-dark-bg rounded-2xl border border-dark-border/50 p-6 transition-all duration-300 hover:border-ocean-500/50 hover:shadow-xl hover:shadow-ocean-500/10 hover:-translate-y-1">
+              <div class="flex gap-2 mb-3 flex-wrap">
+                {post.data.tags.slice(0, 2).map((tag: string) => (
+                  <span class="px-2 py-0.5 text-xs rounded-full bg-ocean-500/10 text-ocean-500 border border-ocean-500/20">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <h3 class="text-lg font-bold text-dark-text-primary mb-2 group-hover:text-ocean-500 transition-colors line-clamp-2">
+                {post.data.title}
+              </h3>
+              <p class="text-dark-text-secondary text-sm mb-4 line-clamp-3">
+                {post.data.description}
+              </p>
+              <div class="flex items-center gap-2 text-xs text-gray-500 mt-auto">
+                <span>{post.data.author}</span>
+                <span>·</span>
+                <time datetime={post.data.pubDate.toISOString()}>
+                  {post.data.pubDate.toLocaleDateString(lang === 'zh' ? 'zh-CN' : 'en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                  })}
+                </time>
+              </div>
+            </article>
+          </a>
+        ))}
+      </div>
+
+      <div class="text-center">
+        <a
+          href={`${langPrefix}/blog`}
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-ocean-500/30 bg-ocean-500/5 text-ocean-500 font-semibold hover:bg-ocean-500/10 hover:border-ocean-500 transition-all duration-300"
+        >
+          {lang === 'zh' ? '查看所有文章' : 'View All Posts'}
+          <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+)}

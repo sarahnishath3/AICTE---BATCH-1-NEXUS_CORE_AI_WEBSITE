@@ -18,10 +18,10 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 ---
 
-<BaseLayout 
+<BaseLayout
   title={post.data.title}
   description={post.data.description}
-  image={post.data.image}
+  ogImage={post.data.image}
 >
   <article class="max-w-3xl mx-auto px-4 py-12">
     <header class="mb-12">

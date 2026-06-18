@@ -7,6 +7,7 @@ import FeatureMatrix from '../components/react/FeatureMatrix';
 import QuickStart from '../components/astro/landing/QuickStart.astro';
 import UseCases from '../components/astro/landing/UseCases.astro';
 import Stats from '../components/astro/landing/Stats.astro';
+import BlogPreview from '../components/astro/landing/BlogPreview.astro';
 import { getLangFromUrl } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
@@ -27,4 +28,5 @@ export const prerender = true;
   <QuickStart />
   <UseCases />
   <Stats />
+  <BlogPreview />
 </BaseLayout>
