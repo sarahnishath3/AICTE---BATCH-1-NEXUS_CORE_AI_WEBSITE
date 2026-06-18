@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
-import vercel from '@astrojs/vercel';
+import netlify from '@astrojs/netlify';
 import sitemap from '@astrojs/sitemap';
 import sentry from '@sentry/astro';
 
@@ -41,7 +41,7 @@ export default defineConfig({
     })
   ],
   output: 'server', // Enable SSR for API routes and admin dashboard
-  adapter: vercel(),
+  adapter: netlify(),
 
   vite: {
     plugins: [tailwindcss()]
